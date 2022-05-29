@@ -1,35 +1,57 @@
-import { Fragment, useState } from "react";
-import BottomNavigation from "@material-ui/core/BottomNavigation";
-import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import { Restore, AddAPhoto } from "@material-ui/icons";
+import React, { Component } from "react";
 import { jsonMock } from "./assets/mockData";
+import Render from "./components/Render";
+import Header from "./components/Header";
 
-const App = () => {
-  const [modelGLB, setModelGLB] = useState(jsonMock.linksGLB[0]);
-  const [modelUSDZ, setModelUSDZ] = useState(jsonMock.linksUSDZ[0]);
+// const App2 = () => {
+//   const [modelGLB, setModelGLB] = useState(jsonMock.linksGLB[0]);
+//   const [modelUSDZ, setModelUSDZ] = useState(jsonMock.linksUSDZ[0]);
 
-  const onSelectModel = (glb, usdz) => {
-    setModelGLB(glb);
-    setModelUSDZ(usdz);
-  };
+//   const onSelectModel = (glb, usdz) => {
+//     setModelGLB(glb);
+//     setModelUSDZ(usdz);
+//   };
+// }
+  // render();{
+  //   return (
+  //     <Render />
+  //   );
+  // }
+  class App extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        foo: "bar",
+        resumeData: {}
+      };
+  
+      // ReactGA.initialize("UA-110570651-1");
+      // ReactGA.pageview(window.location.pathname);
+    }
+  
+    // getResumeData() {
+    //   $.ajax({
+    //     url: "./resumeData.json",
+    //     dataType: "json",
+    //     cache: false,
+    //     success: function(data) {
+    //       this.setState({ resumeData: data });
+    //     }.bind(this),
+    //     error: function(xhr, status, err) {
+    //       console.log(err);
+    //       alert(err);
+    //     }
+    //   });
+    // }
+  
+    render() {
+      return (
+        <div className="App">
+        <Render/>
+        </div>
+      );
+    }
+  }
 
-  return (
-    <Fragment>
-      <model-viewer 
-      ar ar-modes="webxr scene-viewer quick-look" 
-      camera-controls 
-      src="https://res.cloudinary.com/dhq1ehjl0/image/upload/v1648311566/poly_z9fssa.glb" 
-      alt="A 3D model of an astronaut"
-      auto-rotate
-      style={{ width: "100vw", height: "90vh" }}
-      >
-        <button slot="ar-button" styles="background-color: white; border-radius: 4px; border: none; position: absolute; top: 16px; right: 16px; ">
-          👋 Activate AR
-        </button>
-      </model-viewer>
-    </Fragment>
-
-  );
-};
-
-export default App;
+  export default App;
+  
